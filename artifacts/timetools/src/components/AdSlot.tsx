@@ -41,7 +41,7 @@ export function AdSlot({ slot, className = "" }: AdSlotProps) {
         className="adsbygoogle"
         style={{ display: "block" }}
         data-ad-client="ca-pub-2855881084010257"
-        data-ad-slot="REPLACE_WITH_REAL_SLOT_ID"
+        data-ad-slot="9590569694"
         data-ad-format="auto"
         data-full-width-responsive="true"
       />
