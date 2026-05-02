@@ -190,21 +190,21 @@ export function Layout({ children, showSidebar = false }: LayoutProps) {
               </nav>
             </div>
             <div>
-              <p className="text-xs font-semibold text-foreground uppercase tracking-wider mb-2">Legal</p>
+              <p className="text-xs font-semibold text-foreground uppercase tracking-wider mb-2">{t("pages.footer_legal")}</p>
               <nav className="flex flex-col gap-1.5" aria-label="Footer legal">
-                <Link href={langPath("/about")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">About</Link>
-                <Link href={langPath("/contact")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
-                <Link href={langPath("/privacy-policy")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</Link>
-                <Link href={langPath("/terms")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">Terms of Service</Link>
+                <Link href={langPath("/about")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">{t("pages.about")}</Link>
+                <Link href={langPath("/contact")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">{t("pages.contact")}</Link>
+                <Link href={langPath("/privacy-policy")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">{t("pages.privacy_policy")}</Link>
+                <Link href={langPath("/terms")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">{t("pages.terms")}</Link>
               </nav>
             </div>
           </div>
           <div className="border-t border-border pt-4 flex flex-col sm:flex-row items-center justify-between gap-2">
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} TimeZone.tools — All rights reserved.
+              © {new Date().getFullYear()} TimeZone.tools — {t("pages.all_rights")}
             </p>
             <p className="text-xs text-muted-foreground">
-              Free tools for a connected world. No signup required.
+              {t("pages.footer_no_signup")}
             </p>
           </div>
         </div>

@@ -3,12 +3,14 @@ import { Mail, MessageSquare, CheckCircle } from "lucide-react";
 import { useSeo } from "@/hooks/useSeo";
 import { Layout } from "@/components/Layout";
 import { useLang } from "@/contexts/LangContext";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
   const { lang } = useLang();
+  const { t } = useTranslation();
   useSeo({
-    title: "Contact | TimeZone.tools",
-    description: "Contact the TimeZone.tools team — bug reports, feature requests, and general feedback welcome.",
+    title: `${t("contact.page_title")} | TimeZone.tools`,
+    description: t("contact.page_subtitle"),
     canonical: `https://timezone.tools/${lang}/contact`,
   });
 
@@ -37,69 +39,65 @@ export default function Contact() {
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-4">
             <Mail size={28} />
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-3">Contact Us</h1>
-          <p className="text-muted-foreground">
-            Bug report, feature request, or general feedback — we'd love to hear from you.
-          </p>
+          <h1 className="text-3xl font-bold text-foreground mb-3">{t("contact.page_title")}</h1>
+          <p className="text-muted-foreground">{t("contact.page_subtitle")}</p>
         </div>
 
         {submitted ? (
           <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-xl p-8 text-center">
             <CheckCircle className="mx-auto mb-3 text-green-600 dark:text-green-400" size={32} />
-            <h2 className="text-lg font-semibold text-green-800 dark:text-green-300 mb-2">Your email client opened!</h2>
-            <p className="text-sm text-green-700 dark:text-green-400">
-              Please send the email from your mail app. We typically respond within 24 hours.
-            </p>
+            <h2 className="text-lg font-semibold text-green-800 dark:text-green-300 mb-2">{t("contact.success_title")}</h2>
+            <p className="text-sm text-green-700 dark:text-green-400">{t("contact.success_desc")}</p>
             <button onClick={() => setSubmitted(false)} className="mt-4 text-sm text-green-700 dark:text-green-400 underline hover:no-underline">
-              Send another message
+              {t("contact.success_again")}
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="bg-card border border-card-border rounded-xl p-6 space-y-4">
             <div className="flex items-center gap-2 mb-2 text-sm font-semibold text-foreground">
               <MessageSquare size={15} className="text-primary" />
-              Send us a message
+              {t("contact.form_title")}
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Your Name</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5">{t("contact.name_label")}</label>
                 <input type="text" required value={form.name} onChange={update("name")}
-                  placeholder="Jane Smith" className={inputClass} />
+                  placeholder={t("contact.name_placeholder")} className={inputClass} />
               </div>
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Email Address</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5">{t("contact.email_label")}</label>
                 <input type="email" required value={form.email} onChange={update("email")}
-                  placeholder="jane@example.com" className={inputClass} />
+                  placeholder={t("contact.email_placeholder")} className={inputClass} />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-muted-foreground mb-1.5">Subject</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1.5">{t("contact.subject_label")}</label>
               <select value={form.subject} onChange={update("subject")} className={inputClass}>
-                <option value="">Select a subject…</option>
-                <option value="Bug Report">Bug Report</option>
-                <option value="Feature Request">Feature Request</option>
-                <option value="General Feedback">General Feedback</option>
-                <option value="Business Inquiry">Business Inquiry</option>
-                <option value="Other">Other</option>
+                <option value="">{t("contact.subject_placeholder")}</option>
+                <option value="Bug Report">{t("contact.subject_bug")}</option>
+                <option value="Feature Request">{t("contact.subject_feature")}</option>
+                <option value="General Feedback">{t("contact.subject_feedback")}</option>
+                <option value="Business Inquiry">{t("contact.subject_business")}</option>
+                <option value="Other">{t("contact.subject_other")}</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-muted-foreground mb-1.5">Message</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1.5">{t("contact.message_label")}</label>
               <textarea required rows={5} value={form.message} onChange={update("message")}
-                placeholder="Describe your issue or request in detail…"
+                placeholder={t("contact.message_placeholder")}
                 className={`${inputClass} min-h-[120px] resize-y`} />
             </div>
 
             <button type="submit"
               className="w-full py-2.5 px-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 active:bg-primary/80 transition-colors">
-              Send Message
+              {t("contact.send_btn")}
             </button>
 
             <p className="text-xs text-muted-foreground text-center">
-              Or email us directly at{" "}
+              {t("contact.or_email")}{" "}
               <a href="mailto:contact@timezone.tools" className="text-primary hover:underline">
                 contact@timezone.tools
               </a>
@@ -109,12 +107,12 @@ export default function Contact() {
 
         <div className="mt-8 grid sm:grid-cols-2 gap-4">
           <div className="bg-card border border-card-border rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-foreground mb-2">Response Time</h3>
-            <p className="text-sm text-muted-foreground">We typically respond within <strong className="text-foreground">24–48 hours</strong> on business days.</p>
+            <h3 className="text-sm font-semibold text-foreground mb-2">{t("contact.response_title")}</h3>
+            <p className="text-sm text-muted-foreground">{t("contact.response_desc")}</p>
           </div>
           <div className="bg-card border border-card-border rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-foreground mb-2">Before You Write</h3>
-            <p className="text-sm text-muted-foreground">Check our FAQ sections on each tool page — your question may already be answered.</p>
+            <h3 className="text-sm font-semibold text-foreground mb-2">{t("contact.before_title")}</h3>
+            <p className="text-sm text-muted-foreground">{t("contact.before_desc")}</p>
           </div>
         </div>
       </div>
