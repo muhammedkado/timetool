@@ -88,8 +88,8 @@ export default function PrivacyPolicy() {
           <h2 className="text-lg font-semibold">{t("privacy.s8_title")}</h2>
           <p className="text-muted-foreground leading-relaxed">
             {t("privacy.s8_p")}{" "}
-            <a href="mailto:contact@timezone.tools" className="text-primary hover:underline">
-              contact@timezone.tools
+            <a href="mailto:eng.muhammedkado@gmail.com" className="text-primary hover:underline">
+              eng.muhammedkado@gmail.com
             </a>
           </p>
         </div>

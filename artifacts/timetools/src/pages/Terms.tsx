@@ -69,8 +69,8 @@ export default function Terms() {
           <h2 className="text-lg font-semibold">{t("terms.s9_title")}</h2>
           <p className="text-muted-foreground leading-relaxed">
             {t("terms.s9_p")}{" "}
-            <a href="mailto:contact@timezone.tools" className="text-primary hover:underline">
-              contact@timezone.tools
+            <a href="mailto:eng.muhammedkado@gmail.com" className="text-primary hover:underline">
+              eng.muhammedkado@gmail.com
             </a>
           </p>
         </div>

@@ -25,7 +25,7 @@ export default function Contact() {
     const { name, email, subject, message } = form;
     const body = encodeURIComponent(`Name: ${name}\n\nMessage:\n${message}`);
     const sub = encodeURIComponent(subject || "TimeZone.tools Contact");
-    window.location.href = `mailto:contact@timezone.tools?subject=${sub}&body=${body}&reply-to=${encodeURIComponent(email)}`;
+    window.location.href = `mailto:eng.muhammedkado@gmail.com?subject=${sub}&body=${body}&reply-to=${encodeURIComponent(email)}`;
     setSubmitted(true);
   };
 
@@ -98,8 +98,8 @@ export default function Contact() {
 
             <p className="text-xs text-muted-foreground text-center">
               {t("contact.or_email")}{" "}
-              <a href="mailto:contact@timezone.tools" className="text-primary hover:underline">
-                contact@timezone.tools
+              <a href="mailto:eng.muhammedkado@gmail.com" className="text-primary hover:underline">
+                eng.muhammedkado@gmail.com
               </a>
             </p>
           </form>
