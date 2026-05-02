@@ -5,29 +5,8 @@ import { PageLayout, FaqSection } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
 import { countWorkingDays } from "@/lib/holidays";
 import { differenceInCalendarDays, differenceInMonths, differenceInYears } from "date-fns";
-
-const FAQ = [
-  {
-    q: "How do I calculate the number of days between two dates?",
-    a: "Enter a start date and end date in the calculator above. The tool instantly shows the total number of days, weeks, months, and years between the two dates.",
-  },
-  {
-    q: "What is the difference between calendar days and working days?",
-    a: "Calendar days count every day of the week including weekends. Working days (also called business days) only count Monday through Friday, optionally excluding public holidays.",
-  },
-  {
-    q: "How many days until a specific date?",
-    a: "Set today as the start date and your target date as the end date. The result shows exactly how many days remain.",
-  },
-  {
-    q: "How many weeks are between two dates?",
-    a: "The date difference calculator shows full weeks as well as the remaining days. For example, 30 days = 4 weeks and 2 days.",
-  },
-  {
-    q: "Can I calculate how old I am in days?",
-    a: "Yes. Enter your birth date as the start date and today as the end date. The result shows your exact age in years, months, weeks, and days.",
-  },
-];
+import { useTranslation } from "react-i18next";
+import { useLang } from "@/contexts/LangContext";
 
 function getTodayString() {
   const d = new Date();
@@ -41,12 +20,19 @@ function parseDate(str: string): Date | null {
 }
 
 export default function DateDifference() {
+  const { t } = useTranslation();
+  const { lang } = useLang();
+
   useSeo({
-    title: "Date Difference Calculator — Days Between Dates | TimeZone.tools",
-    description:
-      "Calculate the exact number of days, weeks, months, and years between any two dates. Includes working days count. Free and instant.",
-    canonical: "https://timezone.tools/date-difference",
+    title: `${t("dateDiff.page_title")} | TimeZone.tools`,
+    description: t("dateDiff.page_description"),
+    canonical: `https://timezone.tools/${lang}/date-difference`,
   });
+
+  const faqItems = Array.from({ length: 5 }, (_, i) => ({
+    q: t(`dateDiff.faq_q${i + 1}`),
+    a: t(`dateDiff.faq_a${i + 1}`),
+  }));
 
   const today = getTodayString();
   const [startDate, setStartDate] = useState(today);
@@ -61,13 +47,10 @@ export default function DateDifference() {
     const s = parseDate(startDate);
     const e = parseDate(endDate);
     if (!s || !e) return null;
-
     const start = s <= e ? s : e;
     const end = s <= e ? e : s;
     const isSwapped = s > e;
-
     const adjustedEnd = includeToday ? new Date(end.getTime() + 86400000) : end;
-
     const totalDays = differenceInCalendarDays(adjustedEnd, start);
     const weeks = Math.floor(totalDays / 7);
     const remainingDays = totalDays % 7;
@@ -75,30 +58,10 @@ export default function DateDifference() {
     const years = differenceInYears(adjustedEnd, start);
     const workingDays = countWorkingDays(start, includeToday ? adjustedEnd : end, false);
     const workingDaysNoHolidays = countWorkingDays(start, includeToday ? adjustedEnd : end, true);
-
-    return {
-      totalDays,
-      weeks,
-      remainingDays,
-      months,
-      years,
-      workingDays,
-      workingDaysNoHolidays,
-      isSwapped,
-      start,
-      end,
-    };
+    return { totalDays, weeks, remainingDays, months, years, workingDays, workingDaysNoHolidays, isSwapped, start, end };
   }, [startDate, endDate, includeToday]);
 
-  const StatCard = ({
-    label,
-    value,
-    sub,
-  }: {
-    label: string;
-    value: number | string;
-    sub?: string;
-  }) => (
+  const StatCard = ({ label, value, sub }: { label: string; value: number | string; sub?: string }) => (
     <div className="bg-card border border-card-border rounded-xl p-4 text-center">
       <p className="text-3xl font-bold text-primary tabular-nums">{value}</p>
       <p className="text-sm font-medium text-foreground mt-1">{label}</p>
@@ -107,53 +70,31 @@ export default function DateDifference() {
   );
 
   return (
-    <PageLayout
-      title="Date Difference Calculator"
-      description="Calculate the exact number of days, weeks, months, and years between any two dates."
-    >
+    <PageLayout title={t("dateDiff.page_title")} description={t("dateDiff.page_description")}>
       <AdSlot slot="top" className="mb-6" />
 
       <div className="space-y-6">
         <div className="bg-card border border-card-border rounded-xl p-5">
           <h2 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
             <Calendar size={15} className="text-primary" />
-            Select Dates
+            {t("dateDiff.select_dates")}
           </h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-muted-foreground mb-1.5">
-                Start Date
-              </label>
-              <input
-                type="date"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                data-testid="input-start-date"
-                className="w-full px-3 py-2.5 rounded-lg border border-input bg-background text-sm text-foreground min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary/30"
-              />
+              <label className="block text-xs font-medium text-muted-foreground mb-1.5">{t("dateDiff.start_date")}</label>
+              <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} data-testid="input-start-date"
+                className="w-full px-3 py-2.5 rounded-lg border border-input bg-background text-sm text-foreground min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary/30" />
             </div>
             <div>
-              <label className="block text-xs font-medium text-muted-foreground mb-1.5">
-                End Date
-              </label>
-              <input
-                type="date"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                data-testid="input-end-date"
-                className="w-full px-3 py-2.5 rounded-lg border border-input bg-background text-sm text-foreground min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary/30"
-              />
+              <label className="block text-xs font-medium text-muted-foreground mb-1.5">{t("dateDiff.end_date")}</label>
+              <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} data-testid="input-end-date"
+                className="w-full px-3 py-2.5 rounded-lg border border-input bg-background text-sm text-foreground min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary/30" />
             </div>
           </div>
           <label className="flex items-center gap-2 mt-4 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={includeToday}
-              onChange={(e) => setIncludeToday(e.target.checked)}
-              data-testid="checkbox-include-today"
-              className="w-4 h-4 rounded border-input accent-primary"
-            />
-            <span className="text-sm text-muted-foreground">Include end date in count</span>
+            <input type="checkbox" checked={includeToday} onChange={(e) => setIncludeToday(e.target.checked)}
+              data-testid="checkbox-include-today" className="w-4 h-4 rounded border-input accent-primary" />
+            <span className="text-sm text-muted-foreground">{t("dateDiff.include_end")}</span>
           </label>
         </div>
 
@@ -161,69 +102,41 @@ export default function DateDifference() {
           <>
             {result.isSwapped && (
               <p className="text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 px-3 py-2 rounded-lg">
-                End date is before start date — showing absolute difference.
+                {t("dateDiff.swapped_warning")}
               </p>
             )}
-
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <StatCard label="Total Days" value={result.totalDays.toLocaleString()} />
-              <StatCard
-                label="Weeks"
-                value={result.weeks.toLocaleString()}
-                sub={`+ ${result.remainingDays} day${result.remainingDays !== 1 ? "s" : ""}`}
-              />
-              <StatCard label="Months" value={result.months.toLocaleString()} />
-              <StatCard label="Years" value={result.years.toLocaleString()} />
+              <StatCard label={t("dateDiff.total_days")} value={result.totalDays.toLocaleString()} />
+              <StatCard label={t("dateDiff.weeks")} value={result.weeks.toLocaleString()}
+                sub={`+ ${result.remainingDays} day${result.remainingDays !== 1 ? "s" : ""}`} />
+              <StatCard label={t("dateDiff.months")} value={result.months.toLocaleString()} />
+              <StatCard label={t("dateDiff.years")} value={result.years.toLocaleString()} />
             </div>
-
             <div className="bg-card border border-card-border rounded-xl p-5">
-              <h2 className="text-sm font-semibold text-foreground mb-3">Working Days</h2>
+              <h2 className="text-sm font-semibold text-foreground mb-3">{t("dateDiff.working_days_title")}</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="p-3 bg-muted/30 rounded-lg">
-                  <p className="text-xs text-muted-foreground mb-0.5">Weekdays (Mon–Fri)</p>
-                  <p className="text-2xl font-bold text-foreground tabular-nums">
-                    {result.workingDays.toLocaleString()}
-                  </p>
+                  <p className="text-xs text-muted-foreground mb-0.5">{t("dateDiff.weekdays_monfri")}</p>
+                  <p className="text-2xl font-bold text-foreground tabular-nums">{result.workingDays.toLocaleString()}</p>
                   <p className="text-xs text-muted-foreground mt-0.5">
-                    Excludes{" "}
-                    {(result.totalDays - result.workingDays).toLocaleString()} weekend days
+                    {t("dateDiff.excludes_weekends", { count: result.totalDays - result.workingDays })}
                   </p>
                 </div>
                 <div className="p-3 bg-muted/30 rounded-lg">
-                  <p className="text-xs text-muted-foreground mb-0.5">
-                    Weekdays (excl. holidays)
-                  </p>
-                  <p className="text-2xl font-bold text-foreground tabular-nums">
-                    {result.workingDaysNoHolidays.toLocaleString()}
-                  </p>
+                  <p className="text-xs text-muted-foreground mb-0.5">{t("dateDiff.weekdays_no_holidays")}</p>
+                  <p className="text-2xl font-bold text-foreground tabular-nums">{result.workingDaysNoHolidays.toLocaleString()}</p>
                   <p className="text-xs text-muted-foreground mt-0.5">
-                    Also excludes{" "}
-                    {(result.workingDays - result.workingDaysNoHolidays).toLocaleString()} holidays
+                    {t("dateDiff.also_excludes", { count: result.workingDays - result.workingDaysNoHolidays })}
                   </p>
                 </div>
               </div>
             </div>
-
             <div className="bg-card border border-card-border rounded-xl p-4">
               <p className="text-sm text-muted-foreground">
-                From{" "}
-                <strong className="text-foreground">
-                  {result.start.toLocaleDateString("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </strong>{" "}
-                to{" "}
-                <strong className="text-foreground">
-                  {result.end.toLocaleDateString("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </strong>
+                {t("dateDiff.from")}{" "}
+                <strong className="text-foreground">{result.start.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</strong>
+                {" "}{t("dateDiff.to")}{" "}
+                <strong className="text-foreground">{result.end.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</strong>
               </p>
             </div>
           </>
@@ -231,7 +144,7 @@ export default function DateDifference() {
       </div>
 
       <AdSlot slot="bottom" className="mt-6" />
-      <FaqSection items={FAQ} />
+      <FaqSection items={faqItems} />
     </PageLayout>
   );
 }

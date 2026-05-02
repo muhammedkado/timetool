@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+/* Google Fonts loaded via index.html for multilingual support */
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -227,6 +227,37 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  /* RTL base direction */
+  [dir="rtl"] {
+    text-align: right;
+  }
+}
+
+@layer utilities {
+  /* Multilingual font overrides */
+  :lang(ar), .lang-ar body, .lang-ar {
+    font-family: "Noto Sans Arabic", "Inter", ui-sans-serif, sans-serif !important;
+  }
+  :lang(hi), .lang-hi body, .lang-hi {
+    font-family: "Noto Sans Devanagari", "Inter", ui-sans-serif, sans-serif !important;
+  }
+  :lang(zh), .lang-zh body, .lang-zh {
+    font-family: "Noto Sans SC", "Inter", ui-sans-serif, sans-serif !important;
+  }
+
+  /* Ad container */
+  .ad-container {
+    overflow: hidden;
+    min-height: 90px;
+    border-radius: 0.5rem;
+    background: hsl(var(--muted) / 0.2);
+    border: 1px dashed hsl(var(--muted-foreground) / 0.2);
+  }
+  .adsbygoogle {
+    display: block;
+    min-width: 100%;
   }
 }
 
