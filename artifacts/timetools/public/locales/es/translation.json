@@ -31,7 +31,19 @@
     "countdown_title": "Temporizador de cuenta regresiva",
     "countdown_desc": "Cuenta regresiva hasta cualquier evento. Observa cómo pasan días, horas, minutos y segundos en vivo. Comparte con un enlace.",
     "workDays_title": "Calculadora de días hábiles",
-    "workDays_desc": "Cuenta los días hábiles entre fechas, excluyendo fines de semana y días festivos opcionales."
+    "workDays_desc": "Cuenta los días hábiles entre fechas, excluyendo fines de semana y días festivos opcionales.",
+    "faq_q1": "¿Qué es TimeZone.tools?",
+    "faq_a1": "TimeZone.tools es una colección gratuita de herramientas de tiempo y fecha centrada en la privacidad, para trabajadores remotos, desarrolladores y equipos globales. Incluye un conversor de zonas horarias, planificador de reuniones, calculadora de diferencia de fechas, temporizador de cuenta atrás y calculadora de días laborables. Todo funciona en tu navegador, sin cuenta ni registro.",
+    "faq_q2": "¿Son todas las herramientas de TimeZone.tools completamente gratuitas?",
+    "faq_a2": "Sí. Todas las herramientas son 100% gratuitas, sin suscripciones, sin tarifas ocultas y sin cuenta requerida. El sitio se mantiene gracias a publicidad no intrusiva.",
+    "faq_q3": "¿Qué herramientas de tiempo y fecha ofrece TimeZone.tools?",
+    "faq_a3": "TimeZone.tools ofrece 5 herramientas de precisión: un Conversor de Zonas Horarias que soporta 80+ ciudades, un Planificador de Reuniones con cuadrícula visual de 24 horas, una Calculadora de Diferencia de Fechas, un Temporizador de Cuenta Atrás con enlaces compartibles y una Calculadora de Días Laborables con exclusión de festivos.",
+    "faq_q4": "¿Son mis datos privados y seguros en TimeZone.tools?",
+    "faq_a4": "Sí. Todos los cálculos se ejecutan completamente en tu navegador utilizando la API Intl de JavaScript incorporada. Ningún dato que ingreses — fechas, horas o nombres de eventos — se envía a ningún servidor ni se almacena en ningún lugar.",
+    "faq_q5": "¿TimeZone.tools funciona sin cuenta ni registro?",
+    "faq_a5": "Sí. TimeZone.tools no requiere ninguna cuenta, correo electrónico ni registro de ningún tipo. Simplemente abre la herramienta que necesitas y comienza a usarla de inmediato.",
+    "faq_q6": "¿Qué idiomas admite TimeZone.tools?",
+    "faq_a6": "TimeZone.tools está completamente traducido a 7 idiomas: inglés, árabe (con diseño RTL), turco, francés, español, hindi y chino. Usa el selector de idioma en la barra de navegación superior para cambiar el idioma."
   },
   "tz": {
     "page_title": "Conversor de zonas horarias",

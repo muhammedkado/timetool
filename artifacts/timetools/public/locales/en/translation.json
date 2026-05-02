@@ -31,7 +31,19 @@
     "countdown_title": "Countdown Timer",
     "countdown_desc": "Count down to any event. See days, hours, minutes, and seconds tick live. Share with a link.",
     "workDays_title": "Working Days Calculator",
-    "workDays_desc": "Count working days between dates, excluding weekends and optional public holidays."
+    "workDays_desc": "Count working days between dates, excluding weekends and optional public holidays.",
+    "faq_q1": "What is TimeZone.tools?",
+    "faq_a1": "TimeZone.tools is a free, privacy-first collection of time and date tools for remote workers, developers, and global teams. It includes a time zone converter, meeting planner, date difference calculator, countdown timer, and working days calculator. Everything runs in your browser — no account or signup needed.",
+    "faq_q2": "Are all tools on TimeZone.tools completely free?",
+    "faq_a2": "Yes. All tools on TimeZone.tools are 100% free with no subscriptions, no hidden fees, and no account required. The site is supported by non-intrusive advertising.",
+    "faq_q3": "What time and date tools does TimeZone.tools offer?",
+    "faq_a3": "TimeZone.tools offers 5 precision tools: a Time Zone Converter supporting 80+ cities, a Meeting Planner with a 24-hour visual grid, a Date Difference Calculator, a Countdown Timer with shareable links, and a Working Days Calculator with holiday exclusions.",
+    "faq_q4": "Is my data private and secure on TimeZone.tools?",
+    "faq_a4": "Yes. All calculations run entirely in your browser using the built-in JavaScript Intl API. No data you enter — dates, times, or event names — is ever sent to any server or stored anywhere. There are no accounts and no tracking of your inputs.",
+    "faq_q5": "Does TimeZone.tools work without an account or registration?",
+    "faq_a5": "Yes. TimeZone.tools requires no account, no email, and no registration of any kind. Simply open the tool you need and start using it immediately.",
+    "faq_q6": "What languages does TimeZone.tools support?",
+    "faq_a6": "TimeZone.tools is fully translated into 7 languages: English, Arabic (with RTL layout), Turkish, French, Spanish, Hindi, and Chinese. Use the language switcher in the top navigation bar to change the language."
   },
   "tz": {
     "page_title": "Time Zone Converter",

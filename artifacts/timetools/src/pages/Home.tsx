@@ -3,21 +3,21 @@ import { Link } from "wouter";
 import { Clock, Users, Calendar, Timer, Briefcase, ArrowRight } from "lucide-react";
 import { useSeo } from "@/hooks/useSeo";
 import { Layout } from "@/components/Layout";
+import { AdSlot } from "@/components/AdSlot";
 import { useTranslation } from "react-i18next";
 import { useLang } from "@/contexts/LangContext";
 
 const WORLD_CITIES = [
-  { city: "New York", timezone: "America/New_York" },
-  { city: "London", timezone: "Europe/London" },
-  { city: "Dubai", timezone: "Asia/Dubai" },
-  { city: "Singapore", timezone: "Asia/Singapore" },
-  { city: "Tokyo", timezone: "Asia/Tokyo" },
-  { city: "Sydney", timezone: "Australia/Sydney" },
+  { city: "New York",   timezone: "America/New_York" },
+  { city: "London",     timezone: "Europe/London" },
+  { city: "Dubai",      timezone: "Asia/Dubai" },
+  { city: "Singapore",  timezone: "Asia/Singapore" },
+  { city: "Tokyo",      timezone: "Asia/Tokyo" },
+  { city: "Sydney",     timezone: "Australia/Sydney" },
 ];
 
 function WorldClock() {
   const [now, setNow] = useState(() => new Date());
-
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(id);
@@ -56,22 +56,46 @@ export default function Home() {
   const { t } = useTranslation();
   const { langPath, lang } = useLang();
 
+  const FAQ_ITEMS = [
+    { q: t("home.faq_q1"), a: t("home.faq_a1") },
+    { q: t("home.faq_q2"), a: t("home.faq_a2") },
+    { q: t("home.faq_q3"), a: t("home.faq_a3") },
+    { q: t("home.faq_q4"), a: t("home.faq_a4") },
+    { q: t("home.faq_q5"), a: t("home.faq_a5") },
+    { q: t("home.faq_q6"), a: t("home.faq_a6") },
+  ];
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQ_ITEMS.map(({ q, a }) => ({
+      "@type": "Question",
+      "name": q,
+      "acceptedAnswer": { "@type": "Answer", "text": a },
+    })),
+  };
+
   useSeo({
-    title: `Free Time & Date Tools | TimeZone.tools`,
-    description: "Free time zone converter, meeting planner, date difference calculator, countdown timer, and working days calculator. Precise tools for a global world.",
+    title: "Free Time & Date Tools | TimeZone.tools",
+    description: "Free time zone converter, meeting planner, date difference calculator, countdown timer, and working days calculator. Precise tools for remote teams and global workers.",
     canonical: `https://timezone.tools/${lang}/`,
+    keywords: "time zone converter, meeting planner, date difference calculator, countdown timer, working days calculator, world clock, free time tools",
+    ogUrl: `https://timezone.tools/${lang}/`,
+    ogImage: "https://timezone.tools/opengraph.jpg",
+    jsonLd: faqJsonLd,
   });
 
   const TOOLS = [
-    { path: "/time-zone-converter", icon: Clock, titleKey: "home.timezone_title", descKey: "home.timezone_desc" },
-    { path: "/meeting-planner", icon: Users, titleKey: "home.meeting_title", descKey: "home.meeting_desc" },
-    { path: "/date-difference", icon: Calendar, titleKey: "home.dateDiff_title", descKey: "home.dateDiff_desc" },
-    { path: "/countdown-timer", icon: Timer, titleKey: "home.countdown_title", descKey: "home.countdown_desc" },
-    { path: "/working-days", icon: Briefcase, titleKey: "home.workDays_title", descKey: "home.workDays_desc" },
+    { path: "/time-zone-converter", icon: Clock,     titleKey: "home.timezone_title", descKey: "home.timezone_desc" },
+    { path: "/meeting-planner",     icon: Users,     titleKey: "home.meeting_title",  descKey: "home.meeting_desc" },
+    { path: "/date-difference",     icon: Calendar,  titleKey: "home.dateDiff_title", descKey: "home.dateDiff_desc" },
+    { path: "/countdown-timer",     icon: Timer,     titleKey: "home.countdown_title",descKey: "home.countdown_desc" },
+    { path: "/working-days",        icon: Briefcase, titleKey: "home.workDays_title", descKey: "home.workDays_desc" },
   ];
 
   return (
     <Layout>
+      {/* Hero */}
       <section className="bg-gradient-to-b from-muted/40 to-background border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-medium px-3 py-1 rounded-full mb-5 border border-primary/20">
@@ -90,6 +114,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Ad Banner between hero and tools */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <AdSlot slot="top" />
+      </div>
+
+      {/* All Tools */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="text-center mb-10">
           <h2 className="text-2xl font-bold text-foreground">{t("home.all_tools")}</h2>
@@ -118,6 +148,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Stats */}
       <section className="bg-muted/30 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <div className="grid sm:grid-cols-3 gap-8 text-center">
@@ -134,6 +165,32 @@ export default function Home() {
               <p className="text-sm text-muted-foreground mt-1">{t("home.stat_free")}</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Ad Banner before FAQ */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <AdSlot slot="bottom" />
+      </div>
+
+      {/* FAQ Section */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <h2 className="text-2xl font-bold text-foreground mb-6">{t("common.faq_title")}</h2>
+        <div className="space-y-3">
+          {FAQ_ITEMS.map((item, i) => (
+            <details key={i} className="group border border-border rounded-xl overflow-hidden">
+              <summary className="flex items-center justify-between px-5 py-4 cursor-pointer text-sm font-medium text-foreground hover:bg-muted transition-colors list-none">
+                <span>{item.q}</span>
+                <svg className="w-4 h-4 text-muted-foreground group-open:rotate-180 transition-transform flex-shrink-0 ms-3"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="px-5 pb-4 pt-2 text-sm text-muted-foreground leading-relaxed border-t border-border bg-muted/20">
+                {item.a}
+              </div>
+            </details>
+          ))}
         </div>
       </section>
     </Layout>

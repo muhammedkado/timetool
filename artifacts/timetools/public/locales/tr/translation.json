@@ -31,7 +31,19 @@
     "countdown_title": "Geri Sayım Sayacı",
     "countdown_desc": "Herhangi bir etkinliğe geri sayım yapın. Gün, saat, dakika ve saniyelerin canlı olarak geçişini izleyin. Bir bağlantıyla paylaşın.",
     "workDays_title": "İş Günleri Hesaplayıcı",
-    "workDays_desc": "Tarihler arasındaki iş günlerini, hafta sonları ve isteğe bağlı resmi tatilleri hariç tutarak sayın."
+    "workDays_desc": "Tarihler arasındaki iş günlerini, hafta sonları ve isteğe bağlı resmi tatilleri hariç tutarak sayın.",
+    "faq_q1": "TimeZone.tools nedir?",
+    "faq_a1": "TimeZone.tools, uzaktan çalışanlar, geliştiriciler ve küresel ekipler için ücretsiz, gizlilik odaklı bir zaman ve tarih araçları koleksiyonudur. Saat dilimi dönüştürücü, toplantı planlayıcı, tarih farkı hesaplayıcı, geri sayım sayacı ve iş günü hesaplayıcı içerir. Her şey tarayıcınızda çalışır — hesap veya kayıt gerekmez.",
+    "faq_q2": "TimeZone.tools'daki tüm araçlar tamamen ücretsiz mi?",
+    "faq_a2": "Evet. TimeZone.tools'daki tüm araçlar abonelik, gizli ücret veya hesap gerektirmeksizin %100 ücretsizdir. Site göze batmayan reklamlar aracılığıyla desteklenmektedir.",
+    "faq_q3": "TimeZone.tools hangi zaman ve tarih araçlarını sunuyor?",
+    "faq_a3": "TimeZone.tools 5 hassas araç sunar: 80'den fazla şehri destekleyen Saat Dilimi Dönüştürücü, 24 saatlik görsel ızgaralı Toplantı Planlayıcı, Tarih Farkı Hesaplayıcı, paylaşılabilir bağlantılı Geri Sayım Sayacı ve tatil hariç tutma özellikli İş Günü Hesaplayıcı.",
+    "faq_q4": "TimeZone.tools'da verilerim gizli ve güvenli mi?",
+    "faq_a4": "Evet. Tüm hesaplamalar yerleşik JavaScript Intl API kullanılarak tamamen tarayıcınızda çalışır. Girdiğiniz hiçbir veri — tarihler, saatler veya etkinlik adları — hiçbir sunucuya gönderilmez veya depolanmaz.",
+    "faq_q5": "TimeZone.tools hesap veya kayıt olmadan çalışıyor mu?",
+    "faq_a5": "Evet. TimeZone.tools herhangi bir hesap, e-posta veya kayıt gerektirmez. İhtiyacınız olan aracı açın ve hemen kullanmaya başlayın.",
+    "faq_q6": "TimeZone.tools hangi dilleri destekliyor?",
+    "faq_a6": "TimeZone.tools 7 dile tam olarak çevrilmiştir: İngilizce, Arapça (RTL düzeniyle), Türkçe, Fransızca, İspanyolca, Hintçe ve Çince. Dili değiştirmek için üst gezinme çubuğundaki dil değiştiriciyi kullanın."
   },
   "tz": {
     "page_title": "Saat Dilimi Dönüştürücü",

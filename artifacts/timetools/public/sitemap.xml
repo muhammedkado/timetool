@@ -1,33 +1,225 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- HOME -->
   <url>
-    <loc>https://timezone.tools/</loc>
+    <loc>https://timezone.tools/en/</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://timezone.tools/en/"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://timezone.tools/ar/"/>
+    <xhtml:link rel="alternate" hreflang="tr"        href="https://timezone.tools/tr/"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://timezone.tools/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://timezone.tools/es/"/>
+    <xhtml:link rel="alternate" hreflang="hi"        href="https://timezone.tools/hi/"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://timezone.tools/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timezone.tools/en/"/>
   </url>
+  <url><loc>https://timezone.tools/ar/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://timezone.tools/tr/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://timezone.tools/fr/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://timezone.tools/es/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://timezone.tools/hi/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://timezone.tools/zh/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+
+  <!-- TIME ZONE CONVERTER -->
   <url>
-    <loc>https://timezone.tools/time-zone-converter</loc>
+    <loc>https://timezone.tools/en/time-zone-converter</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://timezone.tools/en/time-zone-converter"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://timezone.tools/ar/time-zone-converter"/>
+    <xhtml:link rel="alternate" hreflang="tr"        href="https://timezone.tools/tr/time-zone-converter"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://timezone.tools/fr/time-zone-converter"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://timezone.tools/es/time-zone-converter"/>
+    <xhtml:link rel="alternate" hreflang="hi"        href="https://timezone.tools/hi/time-zone-converter"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://timezone.tools/zh/time-zone-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timezone.tools/en/time-zone-converter"/>
   </url>
+  <url><loc>https://timezone.tools/ar/time-zone-converter</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/tr/time-zone-converter</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/fr/time-zone-converter</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/es/time-zone-converter</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/hi/time-zone-converter</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/zh/time-zone-converter</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- MEETING PLANNER -->
   <url>
-    <loc>https://timezone.tools/meeting-planner</loc>
+    <loc>https://timezone.tools/en/meeting-planner</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://timezone.tools/en/meeting-planner"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://timezone.tools/ar/meeting-planner"/>
+    <xhtml:link rel="alternate" hreflang="tr"        href="https://timezone.tools/tr/meeting-planner"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://timezone.tools/fr/meeting-planner"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://timezone.tools/es/meeting-planner"/>
+    <xhtml:link rel="alternate" hreflang="hi"        href="https://timezone.tools/hi/meeting-planner"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://timezone.tools/zh/meeting-planner"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timezone.tools/en/meeting-planner"/>
   </url>
+  <url><loc>https://timezone.tools/ar/meeting-planner</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/tr/meeting-planner</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/fr/meeting-planner</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/es/meeting-planner</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/hi/meeting-planner</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/zh/meeting-planner</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- DATE DIFFERENCE -->
   <url>
-    <loc>https://timezone.tools/date-difference</loc>
+    <loc>https://timezone.tools/en/date-difference</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://timezone.tools/en/date-difference"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://timezone.tools/ar/date-difference"/>
+    <xhtml:link rel="alternate" hreflang="tr"        href="https://timezone.tools/tr/date-difference"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://timezone.tools/fr/date-difference"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://timezone.tools/es/date-difference"/>
+    <xhtml:link rel="alternate" hreflang="hi"        href="https://timezone.tools/hi/date-difference"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://timezone.tools/zh/date-difference"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timezone.tools/en/date-difference"/>
   </url>
+  <url><loc>https://timezone.tools/ar/date-difference</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/tr/date-difference</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/fr/date-difference</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/es/date-difference</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/hi/date-difference</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/zh/date-difference</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- COUNTDOWN TIMER -->
   <url>
-    <loc>https://timezone.tools/countdown-timer</loc>
+    <loc>https://timezone.tools/en/countdown-timer</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://timezone.tools/en/countdown-timer"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://timezone.tools/ar/countdown-timer"/>
+    <xhtml:link rel="alternate" hreflang="tr"        href="https://timezone.tools/tr/countdown-timer"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://timezone.tools/fr/countdown-timer"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://timezone.tools/es/countdown-timer"/>
+    <xhtml:link rel="alternate" hreflang="hi"        href="https://timezone.tools/hi/countdown-timer"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://timezone.tools/zh/countdown-timer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timezone.tools/en/countdown-timer"/>
   </url>
+  <url><loc>https://timezone.tools/ar/countdown-timer</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/tr/countdown-timer</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/fr/countdown-timer</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/es/countdown-timer</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/hi/countdown-timer</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/zh/countdown-timer</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- WORKING DAYS -->
   <url>
-    <loc>https://timezone.tools/working-days</loc>
+    <loc>https://timezone.tools/en/working-days</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://timezone.tools/en/working-days"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://timezone.tools/ar/working-days"/>
+    <xhtml:link rel="alternate" hreflang="tr"        href="https://timezone.tools/tr/working-days"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://timezone.tools/fr/working-days"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://timezone.tools/es/working-days"/>
+    <xhtml:link rel="alternate" hreflang="hi"        href="https://timezone.tools/hi/working-days"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://timezone.tools/zh/working-days"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timezone.tools/en/working-days"/>
   </url>
+  <url><loc>https://timezone.tools/ar/working-days</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/tr/working-days</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/fr/working-days</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/es/working-days</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/hi/working-days</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://timezone.tools/zh/working-days</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- ABOUT -->
+  <url>
+    <loc>https://timezone.tools/en/about</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://timezone.tools/en/about"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://timezone.tools/ar/about"/>
+    <xhtml:link rel="alternate" hreflang="tr"        href="https://timezone.tools/tr/about"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://timezone.tools/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://timezone.tools/es/about"/>
+    <xhtml:link rel="alternate" hreflang="hi"        href="https://timezone.tools/hi/about"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://timezone.tools/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timezone.tools/en/about"/>
+  </url>
+  <url><loc>https://timezone.tools/ar/about</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://timezone.tools/tr/about</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://timezone.tools/fr/about</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://timezone.tools/es/about</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://timezone.tools/hi/about</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://timezone.tools/zh/about</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- CONTACT -->
+  <url>
+    <loc>https://timezone.tools/en/contact</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://timezone.tools/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://timezone.tools/ar/contact"/>
+    <xhtml:link rel="alternate" hreflang="tr"        href="https://timezone.tools/tr/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://timezone.tools/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://timezone.tools/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="hi"        href="https://timezone.tools/hi/contact"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://timezone.tools/zh/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timezone.tools/en/contact"/>
+  </url>
+  <url><loc>https://timezone.tools/ar/contact</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://timezone.tools/tr/contact</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://timezone.tools/fr/contact</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://timezone.tools/es/contact</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://timezone.tools/hi/contact</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://timezone.tools/zh/contact</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- PRIVACY POLICY -->
+  <url>
+    <loc>https://timezone.tools/en/privacy-policy</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://timezone.tools/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://timezone.tools/ar/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="tr"        href="https://timezone.tools/tr/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://timezone.tools/fr/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://timezone.tools/es/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="hi"        href="https://timezone.tools/hi/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://timezone.tools/zh/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timezone.tools/en/privacy-policy"/>
+  </url>
+  <url><loc>https://timezone.tools/ar/privacy-policy</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://timezone.tools/tr/privacy-policy</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://timezone.tools/fr/privacy-policy</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://timezone.tools/es/privacy-policy</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://timezone.tools/hi/privacy-policy</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://timezone.tools/zh/privacy-policy</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+
+  <!-- TERMS -->
+  <url>
+    <loc>https://timezone.tools/en/terms</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://timezone.tools/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://timezone.tools/ar/terms"/>
+    <xhtml:link rel="alternate" hreflang="tr"        href="https://timezone.tools/tr/terms"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://timezone.tools/fr/terms"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://timezone.tools/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="hi"        href="https://timezone.tools/hi/terms"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://timezone.tools/zh/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timezone.tools/en/terms"/>
+  </url>
+  <url><loc>https://timezone.tools/ar/terms</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://timezone.tools/tr/terms</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://timezone.tools/fr/terms</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://timezone.tools/es/terms</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://timezone.tools/hi/terms</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://timezone.tools/zh/terms</loc><lastmod>2026-05-02</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+
 </urlset>
