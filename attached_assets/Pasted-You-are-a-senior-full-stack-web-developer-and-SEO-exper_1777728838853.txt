@@ -1,0 +1,81 @@
+You are a senior full-stack web developer and SEO expert.
+
+I want you to build a complete small web project that is optimized for:
+- High SEO traffic
+- Fast loading speed
+- Monetization via Google AdSense
+- Global audience
+
+The project idea:
+A simple, fast, and modern website that provides time and date tools.
+
+Main tools required:
+1. Time Zone Converter (convert between cities and countries easily)
+2. Meeting Planner (find best overlapping time across multiple time zones)
+3. Date Difference Calculator (calculate days between two dates)
+4. Countdown Timer (countdown to a specific date)
+5. Working Days Calculator (exclude weekends between dates)
+
+Requirements:
+
+🔧 Tech Stack:
+- Use simple and fast technologies (preferably HTML, CSS, Vanilla JS or lightweight framework like Vue or React if needed)
+- Must be mobile-first responsive design
+- No heavy backend unless absolutely necessary (prefer client-side logic)
+- Optimize for performance (Core Web Vitals)
+
+🎨 UI/UX:
+- Clean, modern, minimal design
+- Focus on usability and speed
+- Each tool should be accessible within 1 click
+- Use large inputs and clear buttons
+- Show results instantly without page reload
+- Include dark/light mode toggle
+
+🌍 SEO Optimization:
+- Each tool must have its own SEO-friendly page URL (e.g. /time-zone-converter, /date-difference)
+- Add proper meta title and description for each page
+- Use semantic HTML (h1, h2, etc.)
+- Include FAQ section under each tool (for long-tail keywords)
+- Optimize for keywords like:
+  "time zone converter"
+  "date difference calculator"
+  "countdown timer online"
+  "working days calculator"
+
+💰 AdSense Optimization:
+- Design layout with natural ad placement areas:
+  - One ad above the tool
+  - One ad below the result
+  - One ad in sidebar (desktop)
+- Avoid intrusive design
+- Ensure content is sufficient for AdSense approval
+
+⚡ Performance:
+- Fast loading (<2 seconds)
+- Lazy load non-critical assets
+- Minimize JS and CSS
+- Use CDN-friendly structure
+
+📱 Features:
+- Detect user timezone automatically
+- Allow search by city or country
+- Support multiple time zones in meeting planner
+- Real-time updates for time calculations
+
+📦 Deliverables:
+1. Full project structure (folders and files)
+2. Clean and well-commented code
+3. Instructions on how to run locally
+4. Suggestions for deployment (e.g., Vercel, Netlify)
+5. SEO strategy for getting first 1000 users
+6. Suggestions for future scaling (adding more tools)
+
+🧠 Extra:
+- Suggest a brand name for the website
+- Suggest domain name ideas (short and global)
+- Suggest logo concept
+- Suggest color palette
+
+Build this as a production-ready MVP, not just a demo.
+Focus on simplicity, speed, and real-world usability.

@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Time & Date Tools"
+version = "1.0.0"
+id = "artifacts/timetools"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19450
+
+[services.development]
+run = "pnpm --filter @workspace/timetools run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/timetools", "run", "build" ]
+publicDir = "artifacts/timetools/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19450"
+BASE_PATH = "/"
