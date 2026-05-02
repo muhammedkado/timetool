@@ -13,6 +13,10 @@ import MeetingPlanner from "@/pages/MeetingPlanner";
 import DateDifference from "@/pages/DateDifference";
 import CountdownTimer from "@/pages/CountdownTimer";
 import WorkingDays from "@/pages/WorkingDays";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import Terms from "@/pages/Terms";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +58,10 @@ function LangRoutes() {
         <Route path="/:lang/date-difference" component={DateDifference} />
         <Route path="/:lang/countdown-timer" component={CountdownTimer} />
         <Route path="/:lang/working-days" component={WorkingDays} />
+        <Route path="/:lang/privacy-policy" component={PrivacyPolicy} />
+        <Route path="/:lang/about" component={About} />
+        <Route path="/:lang/contact" component={Contact} />
+        <Route path="/:lang/terms" component={Terms} />
         <Route component={NotFound} />
       </Switch>
     </LangProvider>

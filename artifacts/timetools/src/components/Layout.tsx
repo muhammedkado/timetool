@@ -170,24 +170,42 @@ export function Layout({ children, showSidebar = false }: LayoutProps) {
       </div>
 
       <footer className="border-t border-border bg-background/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Clock size={15} />
-              <span className="text-sm font-semibold">TimeZone.tools</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid sm:grid-cols-3 gap-6 mb-6">
+            <div>
+              <div className="flex items-center gap-2 text-foreground mb-2">
+                <Clock size={15} className="text-primary" />
+                <span className="text-sm font-bold">TimeZone.tools</span>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">{t("common.footer_tagline")}</p>
             </div>
-            <nav className="flex flex-wrap justify-center gap-4" aria-label="Footer navigation">
-              {NAV_LINKS.map(({ path, key }) => (
-                <Link
-                  key={path}
-                  href={langPath(path)}
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {t(key)}
-                </Link>
-              ))}
-            </nav>
-            <p className="text-xs text-muted-foreground">{t("common.footer_tagline")}</p>
+            <div>
+              <p className="text-xs font-semibold text-foreground uppercase tracking-wider mb-2">Tools</p>
+              <nav className="flex flex-col gap-1.5" aria-label="Footer tools">
+                {NAV_LINKS.map(({ path, key }) => (
+                  <Link key={path} href={langPath(path)} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                    {t(key)}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-foreground uppercase tracking-wider mb-2">Legal</p>
+              <nav className="flex flex-col gap-1.5" aria-label="Footer legal">
+                <Link href={langPath("/about")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">About</Link>
+                <Link href={langPath("/contact")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
+                <Link href={langPath("/privacy-policy")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</Link>
+                <Link href={langPath("/terms")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">Terms of Service</Link>
+              </nav>
+            </div>
+          </div>
+          <div className="border-t border-border pt-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p className="text-xs text-muted-foreground">
+              © {new Date().getFullYear()} TimeZone.tools — All rights reserved.
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Free tools for a connected world. No signup required.
+            </p>
           </div>
         </div>
       </footer>
