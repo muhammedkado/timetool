@@ -4,7 +4,10 @@
     "faq_title": "Frequently Asked Questions",
     "free_no_signup": "Free — No signup required",
     "open_tool": "Open tool",
-    "footer_tagline": "Free tools for a connected world"
+    "footer_tagline": "Free tools for a connected world",
+    "share": "Share",
+    "copied": "Copied!",
+    "recent_timezones": "Recent"
   },
   "nav": {
     "timezone_converter": "Time Zone Converter",
@@ -184,7 +187,9 @@
     "faq_q4": "How do I calculate a deadline excluding weekends?",
     "faq_a4": "Enter today as the start date and your deadline as the end date. The result shows how many working days remain, helping you plan project timelines.",
     "faq_q5": "Does the calculator account for public holidays?",
-    "faq_a5": "Yes. Enable the 'Exclude public holidays' option to subtract major US, UK, and global holidays from the working day count."
+    "faq_a5": "Yes. Enable the 'Exclude public holidays' option to subtract major US, UK, and global holidays from the working day count.",
+    "select_country": "Country / Region",
+    "country_note": "Based on {{country}} public holidays"
   },
   "pages": {
     "about": "About",
@@ -267,6 +272,7 @@
     "s5_title": "5. Third-Party Services",
     "s5_intro": "Our website uses the following third-party services, each with their own privacy policies:",
     "s5_fonts_desc": "fonts served from Google's CDN. Google may log requests per their privacy policy",
+    "s5_ga4_desc": "Google Analytics — anonymous usage statistics per Google's privacy policy",
     "s6_title": "6. Children's Privacy",
     "s6_p": "Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13.",
     "s7_title": "7. Changes to This Privacy Policy",
@@ -307,5 +313,15 @@
     "es": "Español",
     "hi": "हिन्दी",
     "zh": "中文"
+  },
+  "countries": {
+    "US": "United States",
+    "GB": "United Kingdom",
+    "TR": "Turkey",
+    "FR": "France",
+    "ES": "Spain",
+    "IN": "India",
+    "CN": "China",
+    "SA": "Saudi Arabia / UAE"
   }
 }

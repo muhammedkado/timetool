@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Plus, Trash2, ArrowLeftRight, Clock } from "lucide-react";
+import { useState, useCallback } from "react";
+import { Plus, Trash2, ArrowLeftRight, Clock, Share2, Check } from "lucide-react";
 import { useSeo } from "@/hooks/useSeo";
 import { PageLayout, FaqSection } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
@@ -18,14 +18,32 @@ function getCurrentTimeString() {
   return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
 }
 
+function parseShareParams(): { src: string; targets: string[]; date: string; time: string } | null {
+  try {
+    const p = new URLSearchParams(window.location.search);
+    const src = p.get("src");
+    const targets = p.get("targets")?.split(",").filter(Boolean);
+    if (!src || !targets?.length) return null;
+    return { src, targets, date: p.get("date") ?? getTodayString(), time: p.get("time") ?? getCurrentTimeString() };
+  } catch {
+    return null;
+  }
+}
+
 export default function TimeZoneConverter() {
   const { t } = useTranslation();
   const { lang } = useLang();
+
+  const shared = parseShareParams();
 
   useSeo({
     title: `${t("tz.page_title")} | TimeZone.tools`,
     description: t("tz.page_description"),
     canonical: `https://timezone.tools/${lang}/time-zone-converter`,
+    breadcrumbs: [
+      { name: "TimeZone.tools", url: `https://timezone.tools/${lang}/` },
+      { name: t("tz.page_title"), url: `https://timezone.tools/${lang}/time-zone-converter` },
+    ],
   });
 
   const faqItems = Array.from({ length: 6 }, (_, i) => ({
@@ -33,10 +51,11 @@ export default function TimeZoneConverter() {
     a: t(`tz.faq_a${i + 1}`),
   }));
 
-  const [date, setDate] = useState(getTodayString);
-  const [time, setTime] = useState(getCurrentTimeString);
-  const [source, setSource] = useState(() => getUserTimezone());
-  const [targets, setTargets] = useState<string[]>(["Europe/London", "Asia/Tokyo", "Australia/Sydney"]);
+  const [date, setDate] = useState(shared?.date ?? getTodayString);
+  const [time, setTime] = useState(shared?.time ?? getCurrentTimeString);
+  const [source, setSource] = useState(() => shared?.src ?? getUserTimezone());
+  const [targets, setTargets] = useState<string[]>(shared?.targets ?? ["Europe/London", "Asia/Tokyo", "Australia/Sydney"]);
+  const [copied, setCopied] = useState(false);
 
   const utcMoment = parseInTimezone(date, time, source);
 
@@ -51,6 +70,15 @@ export default function TimeZoneConverter() {
     const offset = getUtcOffset(tz, utcMoment);
     return { timeStr, dateStr, offset };
   };
+
+  const share = useCallback(() => {
+    const params = new URLSearchParams({ src: source, targets: targets.join(","), date, time });
+    const url = `${window.location.origin}${window.location.pathname}?${params}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }, [source, targets, date, time]);
 
   const sourceInfo = findTimezone(source);
   const sourceResult = formatResult(source);
@@ -89,6 +117,8 @@ export default function TimeZoneConverter() {
           </div>
         </div>
 
+        <AdSlot slot="mid" className="my-2" />
+
         <div className="space-y-3">
           {targets.map((tz, i) => {
             const info = findTimezone(tz);
@@ -118,11 +148,18 @@ export default function TimeZoneConverter() {
           })}
         </div>
 
-        <button onClick={addTarget} data-testid="button-add-timezone"
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border-2 border-dashed border-border hover:border-primary text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-          <Plus size={16} />
-          {t("tz.add_timezone")}
-        </button>
+        <div className="flex gap-3">
+          <button onClick={addTarget} data-testid="button-add-timezone"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border-2 border-dashed border-border hover:border-primary text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+            <Plus size={16} />
+            {t("tz.add_timezone")}
+          </button>
+          <button onClick={share} data-testid="button-share"
+            className="flex items-center gap-1.5 px-4 py-3 rounded-xl border border-border text-sm font-medium text-muted-foreground hover:text-primary hover:border-primary transition-colors">
+            {copied ? <Check size={15} /> : <Share2 size={15} />}
+            {copied ? t("common.copied") : t("common.share")}
+          </button>
+        </div>
       </div>
 
       <AdSlot slot="bottom" className="mt-6" />

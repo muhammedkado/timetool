@@ -4,7 +4,10 @@
     "faq_title": "Questions fréquemment posées",
     "free_no_signup": "Gratuit — Sans inscription",
     "open_tool": "Ouvrir l'outil",
-    "footer_tagline": "Des outils gratuits pour un monde connecté"
+    "footer_tagline": "Des outils gratuits pour un monde connecté",
+    "share": "Partager",
+    "copied": "Copié !",
+    "recent_timezones": "Récents"
   },
   "nav": {
     "timezone_converter": "Convertisseur de fuseaux horaires",
@@ -184,7 +187,9 @@
     "faq_q4": "Comment calculer une date limite en excluant les week-ends ?",
     "faq_a4": "Entrez aujourd'hui comme date de début et votre date limite comme date de fin. Le résultat indique combien de jours ouvrables il reste, vous aidant à planifier vos calendriers de projet.",
     "faq_q5": "Le calculateur tient-il compte des jours fériés ?",
-    "faq_a5": "Oui. Activez l'option 'Exclure les jours fériés' pour soustraire les principaux jours fériés américains, britanniques et mondiaux du décompte des jours ouvrables."
+    "faq_a5": "Oui. Activez l'option 'Exclure les jours fériés' pour soustraire les principaux jours fériés américains, britanniques et mondiaux du décompte des jours ouvrables.",
+    "select_country": "Pays / Région",
+    "country_note": "Selon les jours fériés de {{country}}"
   },
   "pages": {
     "about": "À propos",
@@ -267,6 +272,7 @@
     "s5_title": "5. Services tiers",
     "s5_intro": "Notre site utilise les services tiers suivants, chacun ayant sa propre politique de confidentialité :",
     "s5_fonts_desc": "polices servies depuis le CDN de Google. Google peut enregistrer les requêtes selon sa politique de confidentialité",
+    "s5_ga4_desc": "Google Analytics — statistiques d'utilisation anonymes selon la politique de confidentialité de Google",
     "s6_title": "6. Confidentialité des enfants",
     "s6_p": "Notre Service ne s'adresse pas aux personnes de moins de 13 ans. Nous ne collectons pas sciemment d'informations personnelles auprès d'enfants de moins de 13 ans.",
     "s7_title": "7. Modifications de la politique de confidentialité",
@@ -298,6 +304,16 @@
     "s8_p": "Nous nous réservons le droit de modifier ces Conditions à tout moment. Continuer à utiliser le Service après les modifications constitue une acceptation des Conditions modifiées.",
     "s9_title": "9. Contact",
     "s9_p": "Des questions sur ces Conditions ? Contactez-nous à"
+  },
+  "countries": {
+    "US": "États-Unis",
+    "GB": "Royaume-Uni",
+    "TR": "Turquie",
+    "FR": "France",
+    "ES": "Espagne",
+    "IN": "Inde",
+    "CN": "Chine",
+    "SA": "Arabie saoudite"
   },
   "lang": {
     "en": "English",

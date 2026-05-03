@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { Check, ChevronDown, Search, X } from "lucide-react";
+import { Check, ChevronDown, Search, X, Clock } from "lucide-react";
 import { TIMEZONES, getUtcOffset } from "@/lib/timezones";
+import { useRecentTimezones } from "@/hooks/useRecentTimezones";
+import { useTranslation } from "react-i18next";
 
 interface TimezoneSelectProps {
   value: string;
@@ -17,12 +19,19 @@ export function TimezoneSelect({
   showOffset = true,
   "data-testid": testId,
 }: TimezoneSelectProps) {
+  const { t } = useTranslation();
+  const { getRecent, addRecent } = useRecentTimezones();
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const selected = TIMEZONES.find((tz) => tz.value === value);
+
+  const recentValues = getRecent();
+  const recentTimezones = recentValues
+    .map((v) => TIMEZONES.find((tz) => tz.value === v))
+    .filter(Boolean) as typeof TIMEZONES;
 
   const filtered =
     search.trim().length > 0
@@ -52,7 +61,36 @@ export function TimezoneSelect({
     return () => document.removeEventListener("mousedown", handleOutside);
   }, []);
 
+  const handleSelect = (tzValue: string) => {
+    addRecent(tzValue);
+    onChange(tzValue);
+    setOpen(false);
+    setSearch("");
+  };
+
   const offset = selected ? getUtcOffset(selected.value) : "";
+
+  const TzOption = ({ tz }: { tz: typeof TIMEZONES[0] }) => (
+    <button
+      key={tz.value}
+      type="button"
+      role="option"
+      aria-selected={value === tz.value}
+      onClick={() => handleSelect(tz.value)}
+      className="w-full flex items-center justify-between px-3 py-2 text-sm hover:bg-muted transition-colors text-left gap-2"
+    >
+      <div className="min-w-0">
+        <span className="font-medium text-foreground">{tz.city}</span>
+        <span className="text-muted-foreground ml-1.5 text-xs">{tz.country}</span>
+      </div>
+      <div className="flex items-center gap-1.5 flex-shrink-0">
+        <span className="text-xs font-mono text-muted-foreground">
+          {getUtcOffset(tz.value)}
+        </span>
+        {value === tz.value && <Check size={12} className="text-primary" />}
+      </div>
+    </button>
+  );
 
   return (
     <div ref={containerRef} className="relative" data-testid={testId}>
@@ -115,31 +153,21 @@ export function TimezoneSelect({
             {filtered.length === 0 ? (
               <p className="text-sm text-muted-foreground p-4 text-center">No results found</p>
             ) : (
-              filtered.map((tz) => (
-                <button
-                  key={tz.value}
-                  type="button"
-                  role="option"
-                  aria-selected={value === tz.value}
-                  onClick={() => {
-                    onChange(tz.value);
-                    setOpen(false);
-                    setSearch("");
-                  }}
-                  className="w-full flex items-center justify-between px-3 py-2 text-sm hover:bg-muted transition-colors text-left gap-2"
-                >
-                  <div className="min-w-0">
-                    <span className="font-medium text-foreground">{tz.city}</span>
-                    <span className="text-muted-foreground ml-1.5 text-xs">{tz.country}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 flex-shrink-0">
-                    <span className="text-xs font-mono text-muted-foreground">
-                      {getUtcOffset(tz.value)}
-                    </span>
-                    {value === tz.value && <Check size={12} className="text-primary" />}
-                  </div>
-                </button>
-              ))
+              <>
+                {search.trim().length === 0 && recentTimezones.length > 0 && (
+                  <>
+                    <div className="px-3 py-1.5 flex items-center gap-1.5 border-b border-border/50">
+                      <Clock size={11} className="text-muted-foreground" />
+                      <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
+                        {t("common.recent_timezones")}
+                      </span>
+                    </div>
+                    {recentTimezones.map((tz) => <TzOption key={`recent-${tz.value}`} tz={tz} />)}
+                    <div className="border-b border-border/50 my-1" />
+                  </>
+                )}
+                {filtered.map((tz) => <TzOption key={tz.value} tz={tz} />)}
+              </>
             )}
           </div>
         </div>

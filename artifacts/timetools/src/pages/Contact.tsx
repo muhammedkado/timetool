@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Mail, MessageSquare, CheckCircle } from "lucide-react";
 import { useSeo } from "@/hooks/useSeo";
 import { Layout } from "@/components/Layout";
+import { AdSlot } from "@/components/AdSlot";
 import { useLang } from "@/contexts/LangContext";
 import { useTranslation } from "react-i18next";
 
@@ -12,6 +13,10 @@ export default function Contact() {
     title: `${t("contact.page_title")} | TimeZone.tools`,
     description: t("contact.page_subtitle"),
     canonical: `https://timezone.tools/${lang}/contact`,
+    breadcrumbs: [
+      { name: "TimeZone.tools", url: `https://timezone.tools/${lang}/` },
+      { name: t("contact.page_title"), url: `https://timezone.tools/${lang}/contact` },
+    ],
   });
 
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -32,7 +37,7 @@ export default function Contact() {
   const inputClass = "w-full px-3 py-2.5 rounded-lg border border-input bg-background text-sm text-foreground min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors";
 
   return (
-    <Layout>
+    <Layout showSidebar>
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         <div className="text-center mb-10">
@@ -115,6 +120,8 @@ export default function Contact() {
             <p className="text-sm text-muted-foreground">{t("contact.before_desc")}</p>
           </div>
         </div>
+
+        <AdSlot slot="bottom" className="mt-8" />
       </div>
     </Layout>
   );

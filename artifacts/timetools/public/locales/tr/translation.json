@@ -4,7 +4,10 @@
     "faq_title": "Sık Sorulan Sorular",
     "free_no_signup": "Ücretsiz — Kayıt gerekmez",
     "open_tool": "Aracı aç",
-    "footer_tagline": "Bağlı bir dünya için ücretsiz araçlar"
+    "footer_tagline": "Bağlı bir dünya için ücretsiz araçlar",
+    "share": "Paylaş",
+    "copied": "Kopyalandı!",
+    "recent_timezones": "Son Kullanılanlar"
   },
   "nav": {
     "timezone_converter": "Saat Dilimi Dönüştürücü",
@@ -184,7 +187,9 @@
     "faq_q4": "Hafta sonları hariç tutularak son tarihi nasıl hesaplarım?",
     "faq_a4": "Başlangıç tarihi olarak bugünü, bitiş tarihi olarak son tarihinizi girin. Sonuç, proje zaman çizelgelerini planlamanıza yardımcı olan kalan iş günü sayısını gösterir.",
     "faq_q5": "Hesaplayıcı resmi tatilleri dikkate alıyor mu?",
-    "faq_a5": "Evet. Başlıca ABD, İngiltere ve küresel tatilleri iş günü sayısından çıkarmak için 'Resmi tatilleri hariç tut' seçeneğini etkinleştirin."
+    "faq_a5": "Evet. Başlıca ABD, İngiltere ve küresel tatilleri iş günü sayısından çıkarmak için 'Resmi tatilleri hariç tut' seçeneğini etkinleştirin.",
+    "select_country": "Ülke / Bölge",
+    "country_note": "{{country}} resmi tatillerine göre"
   },
   "pages": {
     "about": "Hakkında",
@@ -267,6 +272,7 @@
     "s5_title": "5. Üçüncü Taraf Hizmetler",
     "s5_intro": "Web sitemiz, her birinin kendi gizlilik politikaları olan şu üçüncü taraf hizmetleri kullanmaktadır:",
     "s5_fonts_desc": "Google CDN'sinden sunulan yazı tipleri. Google, kendi gizlilik politikası uyarınca istekleri kaydedebilir",
+    "s5_ga4_desc": "Google Analytics — Google'ın gizlilik politikasına göre anonim kullanım istatistikleri",
     "s6_title": "6. Çocukların Gizliliği",
     "s6_p": "Hizmetimiz 13 yaşın altındaki kişilere hitap etmemektedir. 13 yaşın altındaki çocuklardan kişisel bilgi toplamıyoruz.",
     "s7_title": "7. Gizlilik Politikası Değişiklikleri",
@@ -298,6 +304,16 @@
     "s8_p": "Bu Şartları istediğimiz zaman değiştirme hakkını saklı tutarız. Değişikliklerden sonra Hizmeti kullanmaya devam etmek, değiştirilmiş Şartları kabul etmek anlamına gelir.",
     "s9_title": "9. İletişim",
     "s9_p": "Bu Şartlar hakkında sorularınız mı var? Bizimle iletişime geçin:"
+  },
+  "countries": {
+    "US": "ABD",
+    "GB": "Birleşik Krallık",
+    "TR": "Türkiye",
+    "FR": "Fransa",
+    "ES": "İspanya",
+    "IN": "Hindistan",
+    "CN": "Çin",
+    "SA": "Suudi Arabistan"
   },
   "lang": {
     "en": "English",

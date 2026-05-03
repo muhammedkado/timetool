@@ -1,12 +1,16 @@
-import { useState, useMemo } from "react";
-import { Calendar } from "lucide-react";
+import { useState, useMemo, useCallback } from "react";
+import { Calendar, Share2, Check } from "lucide-react";
 import { useSeo } from "@/hooks/useSeo";
 import { PageLayout, FaqSection } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
-import { countWorkingDays } from "@/lib/holidays";
+import { countWorkingDays, HolidayCountry } from "@/lib/holidays";
 import { differenceInCalendarDays, differenceInMonths, differenceInYears } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { useLang } from "@/contexts/LangContext";
+
+const LANG_TO_COUNTRY: Record<string, HolidayCountry> = {
+  en: "US", tr: "TR", fr: "FR", es: "ES", hi: "IN", zh: "CN", ar: "SA",
+};
 
 function getTodayString() {
   const d = new Date();
@@ -19,29 +23,51 @@ function parseDate(str: string): Date | null {
   return isNaN(d.getTime()) ? null : d;
 }
 
+function parseShareParams(): { start: string; end: string; includeEnd: boolean; country: HolidayCountry } | null {
+  try {
+    const p = new URLSearchParams(window.location.search);
+    const s = p.get("start");
+    const e = p.get("end");
+    if (!s || !e) return null;
+    const c = (p.get("country") as HolidayCountry) || "US";
+    return { start: s, end: e, includeEnd: p.get("includeEnd") === "1", country: c };
+  } catch {
+    return null;
+  }
+}
+
 export default function DateDifference() {
   const { t } = useTranslation();
   const { lang } = useLang();
+
+  const shared = parseShareParams();
+  const defaultCountry = (LANG_TO_COUNTRY[lang] ?? "US") as HolidayCountry;
+
+  const [startDate, setStartDate] = useState(() => shared?.start ?? getTodayString());
+  const [endDate, setEndDate] = useState(() => {
+    if (shared?.end) return shared.end;
+    const d = new Date();
+    d.setDate(d.getDate() + 30);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  });
+  const [includeToday, setIncludeToday] = useState(shared?.includeEnd ?? false);
+  const [country] = useState<HolidayCountry>(shared?.country ?? defaultCountry);
+  const [copied, setCopied] = useState(false);
 
   useSeo({
     title: `${t("dateDiff.page_title")} | TimeZone.tools`,
     description: t("dateDiff.page_description"),
     canonical: `https://timezone.tools/${lang}/date-difference`,
+    breadcrumbs: [
+      { name: "TimeZone.tools", url: `https://timezone.tools/${lang}/` },
+      { name: t("dateDiff.page_title"), url: `https://timezone.tools/${lang}/date-difference` },
+    ],
   });
 
   const faqItems = Array.from({ length: 5 }, (_, i) => ({
     q: t(`dateDiff.faq_q${i + 1}`),
     a: t(`dateDiff.faq_a${i + 1}`),
   }));
-
-  const today = getTodayString();
-  const [startDate, setStartDate] = useState(today);
-  const [endDate, setEndDate] = useState(() => {
-    const d = new Date();
-    d.setDate(d.getDate() + 30);
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-  });
-  const [includeToday, setIncludeToday] = useState(false);
 
   const result = useMemo(() => {
     const s = parseDate(startDate);
@@ -56,10 +82,24 @@ export default function DateDifference() {
     const remainingDays = totalDays % 7;
     const months = differenceInMonths(adjustedEnd, start);
     const years = differenceInYears(adjustedEnd, start);
-    const workingDays = countWorkingDays(start, includeToday ? adjustedEnd : end, false);
-    const workingDaysNoHolidays = countWorkingDays(start, includeToday ? adjustedEnd : end, true);
+    const workingDays = countWorkingDays(start, includeToday ? adjustedEnd : end, false, country);
+    const workingDaysNoHolidays = countWorkingDays(start, includeToday ? adjustedEnd : end, true, country);
     return { totalDays, weeks, remainingDays, months, years, workingDays, workingDaysNoHolidays, isSwapped, start, end };
-  }, [startDate, endDate, includeToday]);
+  }, [startDate, endDate, includeToday, country]);
+
+  const share = useCallback(() => {
+    const params = new URLSearchParams({
+      start: startDate,
+      end: endDate,
+      includeEnd: includeToday ? "1" : "0",
+      country,
+    });
+    const url = `${window.location.origin}${window.location.pathname}?${params}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }, [startDate, endDate, includeToday, country]);
 
   const StatCard = ({ label, value, sub }: { label: string; value: number | string; sub?: string }) => (
     <div className="bg-card border border-card-border rounded-xl p-4 text-center">
@@ -75,10 +115,17 @@ export default function DateDifference() {
 
       <div className="space-y-6">
         <div className="bg-card border border-card-border rounded-xl p-5">
-          <h2 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
-            <Calendar size={15} className="text-primary" />
-            {t("dateDiff.select_dates")}
-          </h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+              <Calendar size={15} className="text-primary" />
+              {t("dateDiff.select_dates")}
+            </h2>
+            <button onClick={share} data-testid="button-share"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors">
+              {copied ? <Check size={13} /> : <Share2 size={13} />}
+              {copied ? t("common.copied") : t("common.share")}
+            </button>
+          </div>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1.5">{t("dateDiff.start_date")}</label>
@@ -100,6 +147,8 @@ export default function DateDifference() {
 
         {result && (
           <>
+            <AdSlot slot="mid" className="my-2" />
+
             {result.isSwapped && (
               <p className="text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 px-3 py-2 rounded-lg">
                 {t("dateDiff.swapped_warning")}

@@ -1,5 +1,6 @@
 import { useSeo } from "@/hooks/useSeo";
 import { PageLayout } from "@/components/Layout";
+import { AdSlot } from "@/components/AdSlot";
 import { useLang } from "@/contexts/LangContext";
 import { useTranslation } from "react-i18next";
 
@@ -10,6 +11,10 @@ export default function Terms() {
     title: `${t("terms.page_title")} | TimeZone.tools`,
     description: "Terms of Service for TimeZone.tools — conditions of use for our free time and date tools.",
     canonical: `https://timezone.tools/${lang}/terms`,
+    breadcrumbs: [
+      { name: "TimeZone.tools", url: `https://timezone.tools/${lang}/` },
+      { name: t("terms.page_title"), url: `https://timezone.tools/${lang}/terms` },
+    ],
   });
 
   const updated = "May 2, 2026";
@@ -75,6 +80,8 @@ export default function Terms() {
           </p>
         </div>
       </div>
+
+      <AdSlot slot="bottom" className="mt-8" />
     </PageLayout>
   );
 }

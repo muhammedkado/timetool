@@ -7,8 +7,17 @@ declare global {
   }
 }
 
+// Replace these with new slot IDs once created in AdSense dashboard
+// AdSense → Ads → Ad units → Create ad unit (one per position)
+const SLOT_IDS: Record<"top" | "bottom" | "sidebar" | "mid", string> = {
+  top: "9572282035",
+  bottom: "9590569694",
+  mid: "5281683234",
+  sidebar: "2742090319",
+};
+
 interface AdSlotProps {
-  slot: "top" | "bottom" | "sidebar";
+  slot: "top" | "bottom" | "sidebar" | "mid";
   className?: string;
 }
 
@@ -41,7 +50,7 @@ export function AdSlot({ slot, className = "" }: AdSlotProps) {
         className="adsbygoogle"
         style={{ display: "block" }}
         data-ad-client="ca-pub-2855881084010257"
-        data-ad-slot="9590569694"
+        data-ad-slot={SLOT_IDS[slot]}
         data-ad-format="auto"
         data-full-width-responsive="true"
       />

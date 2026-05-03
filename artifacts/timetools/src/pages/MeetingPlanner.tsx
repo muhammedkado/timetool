@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Plus, Trash2, Users } from "lucide-react";
+import { useState, useCallback } from "react";
+import { Plus, Trash2, Users, Share2, Check } from "lucide-react";
 import { useSeo } from "@/hooks/useSeo";
 import { PageLayout, FaqSection } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
@@ -29,6 +29,22 @@ function getLocalHour(utcHour: number, timezone: string): number {
 function isBusinessHour(h: number) { return h >= 9 && h < 18; }
 function isEarlyOrLate(h: number) { return (h >= 7 && h < 9) || (h >= 18 && h < 22); }
 
+function parseShareParams(): Participant[] | null {
+  try {
+    const p = new URLSearchParams(window.location.search);
+    const raw = p.get("p");
+    if (!raw) return null;
+    const parts = raw.split(",").map((s) => {
+      const idx = s.lastIndexOf(":");
+      if (idx < 1) return null;
+      return { name: decodeURIComponent(s.slice(0, idx)), timezone: decodeURIComponent(s.slice(idx + 1)) };
+    }).filter(Boolean) as Participant[];
+    return parts.length >= 1 ? parts : null;
+  } catch {
+    return null;
+  }
+}
+
 export default function MeetingPlanner() {
   const { t } = useTranslation();
   const { lang } = useLang();
@@ -37,6 +53,10 @@ export default function MeetingPlanner() {
     title: `${t("meet.page_title")} | TimeZone.tools`,
     description: t("meet.page_description"),
     canonical: `https://timezone.tools/${lang}/meeting-planner`,
+    breadcrumbs: [
+      { name: "TimeZone.tools", url: `https://timezone.tools/${lang}/` },
+      { name: t("meet.page_title"), url: `https://timezone.tools/${lang}/meeting-planner` },
+    ],
   });
 
   const faqItems = Array.from({ length: 5 }, (_, i) => ({
@@ -44,10 +64,15 @@ export default function MeetingPlanner() {
     a: t(`meet.faq_a${i + 1}`),
   }));
 
-  const [participants, setParticipants] = useState<Participant[]>([
-    { name: "You", timezone: getUserTimezone() },
-    { name: "Colleague", timezone: "Europe/London" },
-  ]);
+  const [participants, setParticipants] = useState<Participant[]>(() => {
+    const shared = parseShareParams();
+    if (shared) return shared;
+    return [
+      { name: "You", timezone: getUserTimezone() },
+      { name: "Colleague", timezone: "Europe/London" },
+    ];
+  });
+  const [copied, setCopied] = useState(false);
 
   const addParticipant = () => {
     if (participants.length >= 6) return;
@@ -57,6 +82,16 @@ export default function MeetingPlanner() {
   const updateParticipant = (i: number, updates: Partial<Participant>) =>
     setParticipants((p) => p.map((pt, idx) => (idx === i ? { ...pt, ...updates } : pt)));
 
+  const share = useCallback(() => {
+    const encoded = participants.map((p) => `${encodeURIComponent(p.name)}:${encodeURIComponent(p.timezone)}`).join(",");
+    const params = new URLSearchParams({ p: encoded });
+    const url = `${window.location.origin}${window.location.pathname}?${params}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }, [participants]);
+
   const bestSlots = HOURS.filter((h) => participants.every((p) => isBusinessHour(getLocalHour(h, p.timezone))));
 
   return (
@@ -65,10 +100,17 @@ export default function MeetingPlanner() {
 
       <div className="space-y-6">
         <div className="bg-card border border-card-border rounded-xl p-5">
-          <h2 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
-            <Users size={15} className="text-primary" />
-            {t("meet.participants")}
-          </h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+              <Users size={15} className="text-primary" />
+              {t("meet.participants")}
+            </h2>
+            <button onClick={share} data-testid="button-share"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors">
+              {copied ? <Check size={13} /> : <Share2 size={13} />}
+              {copied ? t("common.copied") : t("common.share")}
+            </button>
+          </div>
           <div className="space-y-3">
             {participants.map((p, i) => (
               <div key={i} className="flex items-center gap-2" data-testid={`participant-${i}`}>
@@ -95,6 +137,8 @@ export default function MeetingPlanner() {
             </button>
           )}
         </div>
+
+        <AdSlot slot="mid" className="my-2" />
 
         {bestSlots.length > 0 ? (
           <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-xl p-4">

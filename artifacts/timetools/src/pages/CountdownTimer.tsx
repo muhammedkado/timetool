@@ -53,6 +53,10 @@ export default function CountdownTimer() {
     title: `${t("countdown.page_title")} | TimeZone.tools`,
     description: t("countdown.page_description"),
     canonical: `https://timezone.tools/${lang}/countdown-timer`,
+    breadcrumbs: [
+      { name: "TimeZone.tools", url: `https://timezone.tools/${lang}/` },
+      { name: t("countdown.page_title"), url: `https://timezone.tools/${lang}/countdown-timer` },
+    ],
   });
 
   const faqItems = Array.from({ length: 5 }, (_, i) => ({
@@ -136,6 +140,8 @@ export default function CountdownTimer() {
             ))}
           </div>
         </div>
+
+        <AdSlot slot="mid" className="my-2" />
 
         {isPast ? (
           <div className="bg-primary/10 border border-primary/30 rounded-2xl p-8 text-center">

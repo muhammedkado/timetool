@@ -1,6 +1,7 @@
 import { Clock, Users, Calendar, Timer, Briefcase, Globe, Zap, Shield } from "lucide-react";
 import { useSeo } from "@/hooks/useSeo";
 import { Layout } from "@/components/Layout";
+import { AdSlot } from "@/components/AdSlot";
 import { useLang } from "@/contexts/LangContext";
 import { useTranslation } from "react-i18next";
 
@@ -11,6 +12,10 @@ export default function About() {
     title: `${t("about.page_title")} | TimeZone.tools`,
     description: t("about.page_subtitle"),
     canonical: `https://timezone.tools/${lang}/about`,
+    breadcrumbs: [
+      { name: "TimeZone.tools", url: `https://timezone.tools/${lang}/` },
+      { name: t("about.page_title"), url: `https://timezone.tools/${lang}/about` },
+    ],
   });
 
   const tools = [
@@ -30,7 +35,7 @@ export default function About() {
   const techs = ["React", "TypeScript", "Vite", "Tailwind CSS", "i18next", "date-fns", "IANA Timezone DB"];
 
   return (
-    <Layout>
+    <Layout showSidebar>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         <div className="text-center mb-12">
@@ -42,6 +47,8 @@ export default function About() {
             {t("about.page_subtitle")}
           </p>
         </div>
+
+        <AdSlot slot="top" className="mb-10" />
 
         <section className="mb-12">
           <h2 className="text-xl font-bold text-foreground mb-6">{t("about.mission_title")}</h2>
@@ -97,7 +104,7 @@ export default function About() {
           </div>
         </section>
 
-        <section>
+        <section className="mb-8">
           <h2 className="text-xl font-bold text-foreground mb-6">{t("about.contact_title")}</h2>
           <div className="bg-card border border-card-border rounded-xl p-6">
             <p className="text-muted-foreground leading-relaxed mb-4">{t("about.contact_p")}</p>
@@ -109,6 +116,8 @@ export default function About() {
             </a>
           </div>
         </section>
+
+        <AdSlot slot="bottom" className="mt-4" />
       </div>
     </Layout>
   );

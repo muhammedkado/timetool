@@ -1,5 +1,6 @@
 import { useSeo } from "@/hooks/useSeo";
 import { PageLayout } from "@/components/Layout";
+import { AdSlot } from "@/components/AdSlot";
 import { useLang } from "@/contexts/LangContext";
 import { useTranslation } from "react-i18next";
 
@@ -10,6 +11,10 @@ export default function PrivacyPolicy() {
     title: `${t("privacy.page_title")} | TimeZone.tools`,
     description: "Privacy Policy for TimeZone.tools — learn how we handle your data and use of advertising cookies.",
     canonical: `https://timezone.tools/${lang}/privacy-policy`,
+    breadcrumbs: [
+      { name: "TimeZone.tools", url: `https://timezone.tools/${lang}/` },
+      { name: t("privacy.page_title"), url: `https://timezone.tools/${lang}/privacy-policy` },
+    ],
   });
 
   const updated = "May 2, 2026";
@@ -69,6 +74,9 @@ export default function PrivacyPolicy() {
               </a>
             </li>
             <li>
+              <strong>Google Analytics</strong> — {t("privacy.s5_ga4_desc")}
+            </li>
+            <li>
               <strong>Google Fonts</strong> — {t("privacy.s5_fonts_desc")}
             </li>
           </ul>
@@ -94,6 +102,8 @@ export default function PrivacyPolicy() {
           </p>
         </div>
       </div>
+
+      <AdSlot slot="bottom" className="mt-8" />
     </PageLayout>
   );
 }

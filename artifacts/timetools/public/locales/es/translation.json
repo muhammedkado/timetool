@@ -4,7 +4,10 @@
     "faq_title": "Preguntas frecuentes",
     "free_no_signup": "Gratis — Sin registro",
     "open_tool": "Abrir herramienta",
-    "footer_tagline": "Herramientas gratuitas para un mundo conectado"
+    "footer_tagline": "Herramientas gratuitas para un mundo conectado",
+    "share": "Compartir",
+    "copied": "¡Copiado!",
+    "recent_timezones": "Recientes"
   },
   "nav": {
     "timezone_converter": "Conversor de zonas horarias",
@@ -184,7 +187,9 @@
     "faq_q4": "¿Cómo calculo un plazo excluyendo los fines de semana?",
     "faq_a4": "Ingresa hoy como fecha de inicio y tu fecha límite como fecha de fin. El resultado muestra cuántos días hábiles quedan, ayudándote a planificar los plazos de proyectos.",
     "faq_q5": "¿La calculadora tiene en cuenta los días festivos?",
-    "faq_a5": "Sí. Activa la opción 'Excluir días festivos' para restar los principales festivos de EE.UU., Reino Unido y globales del conteo de días hábiles."
+    "faq_a5": "Sí. Activa la opción 'Excluir días festivos' para restar los principales festivos de EE.UU., Reino Unido y globales del conteo de días hábiles.",
+    "select_country": "País / Región",
+    "country_note": "Según festivos de {{country}}"
   },
   "pages": {
     "about": "Acerca de",
@@ -267,6 +272,7 @@
     "s5_title": "5. Servicios de terceros",
     "s5_intro": "Nuestro sitio utiliza los siguientes servicios de terceros, cada uno con sus propias políticas de privacidad:",
     "s5_fonts_desc": "fuentes servidas desde el CDN de Google. Google puede registrar solicitudes según su política de privacidad",
+    "s5_ga4_desc": "Google Analytics — estadísticas de uso anónimas según la política de privacidad de Google",
     "s6_title": "6. Privacidad de los niños",
     "s6_p": "Nuestro Servicio no está dirigido a personas menores de 13 años. No recopilamos a sabiendas información personal de niños menores de 13 años.",
     "s7_title": "7. Cambios en la política de privacidad",
@@ -298,6 +304,16 @@
     "s8_p": "Nos reservamos el derecho de modificar estos Términos en cualquier momento. El uso continuado del Servicio después de los cambios constituye la aceptación de los Términos modificados.",
     "s9_title": "9. Contacto",
     "s9_p": "¿Preguntas sobre estos Términos? Contáctanos en"
+  },
+  "countries": {
+    "US": "Estados Unidos",
+    "GB": "Reino Unido",
+    "TR": "Turquía",
+    "FR": "Francia",
+    "ES": "España",
+    "IN": "India",
+    "CN": "China",
+    "SA": "Arabia Saudita"
   },
   "lang": {
     "en": "English",

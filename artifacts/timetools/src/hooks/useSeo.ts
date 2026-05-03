@@ -1,5 +1,10 @@
 import { useEffect } from "react";
 
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 interface SeoOptions {
   title: string;
   description: string;
@@ -8,6 +13,7 @@ interface SeoOptions {
   ogImage?: string;
   ogUrl?: string;
   jsonLd?: object;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 function setMetaContent(selector: string, attrName: string, attrValue: string, content: string) {
@@ -30,7 +36,7 @@ function setLinkHref(rel: string, href: string) {
   el.setAttribute("href", href);
 }
 
-export function useSeo({ title, description, canonical, keywords, ogImage, ogUrl, jsonLd }: SeoOptions) {
+export function useSeo({ title, description, canonical, keywords, ogImage, ogUrl, jsonLd, breadcrumbs }: SeoOptions) {
   useEffect(() => {
     document.title = title;
 
@@ -69,11 +75,37 @@ export function useSeo({ title, description, canonical, keywords, ogImage, ogUrl
       script.textContent = JSON.stringify(jsonLd);
     }
 
+    if (breadcrumbs) {
+      const ldData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: breadcrumbs.map((crumb, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: crumb.name,
+          item: crumb.url,
+        })),
+      };
+      const scriptId = "page-breadcrumb-jsonld";
+      let script = document.getElementById(scriptId);
+      if (!script) {
+        script = document.createElement("script");
+        script.setAttribute("type", "application/ld+json");
+        script.id = scriptId;
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(ldData);
+    }
+
     return () => {
       if (jsonLd) {
         const script = document.getElementById("page-jsonld");
         if (script) script.remove();
       }
+      if (breadcrumbs) {
+        const script = document.getElementById("page-breadcrumb-jsonld");
+        if (script) script.remove();
+      }
     };
-  }, [title, description, canonical, keywords, ogImage, ogUrl, jsonLd]);
+  }, [title, description, canonical, keywords, ogImage, ogUrl, jsonLd, breadcrumbs]);
 }
